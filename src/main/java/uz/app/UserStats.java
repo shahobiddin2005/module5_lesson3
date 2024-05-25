@@ -3,7 +3,7 @@ package uz.app;
 import java.util.Optional;
 
 public class UserStats {
-    Long visitCount;
+    private Long visitCount;
 
     public UserStats(Long visitCount) {
         this.visitCount = visitCount;
@@ -14,6 +14,8 @@ public class UserStats {
     }
 
     public Optional<Long> getVisitCount() {
+        if(visitCount==null)
+            return Optional.empty();
         return Optional.of(visitCount);
     }
 }

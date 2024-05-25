@@ -1,17 +1,41 @@
 package uz.app;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.HashMap;
+import java.util.Map;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Map<String,UserStats> day1=new HashMap<>();
+        day1.put("12",new UserStats(5l));
+        day1.put("10",new UserStats(1l));
+        day1.put("158",new UserStats(9l));
+        day1.put("7",new UserStats(3l));
+        day1.put("9",new UserStats(null));
+
+        Map<String,UserStats> day2=new HashMap<>();
+        day2.put("53",new UserStats(4l));
+        day2.put("7",new UserStats(2l));
+        day2.put("33",new UserStats(6l));
+        day2.put("1",new UserStats(4l));
+        day2.put("10",new UserStats(7l));
+        day2.put(null,new UserStats(7l));
+
+        Map<String,UserStats> day4=new HashMap<>();
+        day4.put("1",new UserStats(2l));
+        day4.put("10",null);
+        day4.put("6",new UserStats(5l));
+        day4.put("33",new UserStats(2l));
+        day4.put("12",new UserStats(4l));
+
+
+        UserCounter userCounter =new UserCounter();
+
+
+        Map<Long, Long> count = userCounter.count(day1, day2,null, day4);
+
+        count.forEach((id, visit) ->
+                System.out.printf("userId::%s\t\tcount::%s\n",id,visit));
+
     }
+
 }
